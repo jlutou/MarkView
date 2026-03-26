@@ -16,6 +16,10 @@
 
 ---
 
+<p align="center">
+  <img src="screenshots/app.png" width="720" alt="MarkView screenshot">
+</p>
+
 ## Features
 
 - **Full app** — open any `.md` file with GitHub-style rendering (tables, code blocks, task lists, blockquotes)
