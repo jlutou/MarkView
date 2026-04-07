@@ -16,6 +16,7 @@ struct ContentView: View {
 struct MarkdownWebView: NSViewRepresentable {
     let markdown: String
     let baseURL: URL?
+    @Environment(\.colorScheme) private var colorScheme
 
     class Coordinator {
         var lastMarkdown: String?
@@ -28,6 +29,8 @@ struct MarkdownWebView: NSViewRepresentable {
     }
 
     func updateNSView(_ webView: WKWebView, context: Context) {
+        webView.appearance = NSAppearance(named: colorScheme == .dark ? .darkAqua : .aqua)
+
         guard markdown != context.coordinator.lastMarkdown else { return }
         context.coordinator.lastMarkdown = markdown
         let html = MarkdownRenderer.render(markdown)
