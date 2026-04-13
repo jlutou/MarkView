@@ -12,6 +12,9 @@ class PreviewViewController: NSViewController, QLPreviewingController {
     }
 
     func preparePreviewOfFile(at url: URL, completionHandler handler: @escaping (Error?) -> Void) {
+        let isDark = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark"
+        webView.appearance = NSAppearance(named: isDark ? .darkAqua : .aqua)
+
         guard let data = try? Data(contentsOf: url),
               let markdown = String(data: data, encoding: .utf8) else {
             handler(CocoaError(.fileReadCorruptFile))
